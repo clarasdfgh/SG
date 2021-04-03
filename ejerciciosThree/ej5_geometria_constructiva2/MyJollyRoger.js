@@ -8,73 +8,25 @@ class MyJollyRoger extends THREE.Object3D {
     this.createGUI(gui,titleGui);
 
     var material = new THREE.MeshNormalMaterial();
-    var negro = new THREE.MeshPhongMaterial({color: 0x141414});
-    var amarillo = new THREE.MeshPhongMaterial({color: 0xffef94});
-
-    amarillo.side = THREE.DoubleSide;
 
     var ojo1_geom = new THREE.CylinderGeometry( 3.5, 3.5, 5, 32 );
-    var ojo2_geom = new THREE.CylinderGeometry( 3.5, 3.5, 5, 32 );
-    var nose_geom = new THREE.CylinderGeometry( 1, 1, 5, 32 );
     var head_geom = new THREE.SphereGeometry ( 14, 32, 32, 0, 2*Math.PI, 0, Math.PI );
-    var hat_geom = new THREE.SphereGeometry( 16, 32, 32, 0, 2*Math.PI, 0, 0.5 * Math.PI );
-    var rim_geom = new THREE.TorusGeometry( 17, 2, 3, 32, 2*Math.PI );
-    var jaw_geom = new THREE.SphereGeometry( 8, 32, 32, 0, 2*Math.PI, 0, Math.PI );
 
-    /*jaw_geom.translate(0,-11, 0);
     ojo1_geom.translate(5,-4,11);
-    ojo2_geom.translate(-5,-4,11);
-    nose_geom.translate(0,-8,9);
-
-    rim_geom.rotateX(Math.PI / 2);
     ojo1_geom.rotateX(Math.PI / 1.5);
-    ojo2_geom.rotateX(Math.PI / 1.5);
-    nose_geom.rotateX(Math.PI / 1.5);
 
     var ojo1_bsp = new ThreeBSP(ojo1_geom);
-    var ojo2_bsp = new ThreeBSP(ojo2_geom);
-    var nose_bsp = new ThreeBSP(nose_geom);
     var head_bsp = new ThreeBSP(head_geom);
-    var hat_bsp = new ThreeBSP(hat_geom);
-    var rim_bsp = new ThreeBSP(rim_geom);
-    var jaw_bsp = new ThreeBSP(jaw_geom);
 
     var skull_bsp = head_bsp.subtract(ojo1_bsp);
-    skull_bsp = head_bsp.subtract(ojo2_bsp);
-    skull_bsp = head_bsp.subtract(nose_bsp);
-    skull_bsp = head_bsp.union(jaw_bsp);
 
-    var skull = skull_bsp.toMesh(material);
+    var skull_geom = skull_bsp.toGeometry(material);
+
+    var skull = skull_geom.toMesh(material);
     skull.geometry.computeFaceNormals();
     skull.geometry.computeVertexNormals();
 
-    this.add(skull);*/
-
-    const ojo1 = new THREE.Mesh( ojo1_geom, negro );
-    const ojo2 = new THREE.Mesh( ojo2_geom, negro );
-    const nose = new THREE.Mesh( nose_geom, negro );
-    const head = new THREE.Mesh( head_geom, material );
-    const hat =  new THREE.Mesh ( hat_geom, amarillo );
-    const rim = new THREE.Mesh( rim_geom, amarillo );
-    const jaw = new THREE.Mesh( jaw_geom, material );
-
-    jaw.position.set(0,-11, 0);
-    ojo1.position.set(5,-4,11);
-    ojo2.position.set(-5,-4,11);
-    nose.position.set(0,-8,9);
-
-    rim.rotation.set(Math.PI / 2,0,0);
-    ojo1.rotation.set(Math.PI / 1.5,0,0);
-    ojo2.rotation.set(Math.PI / 1.5,0,0);
-    nose.rotation.set(Math.PI / 1.5,0,0);
-
-    this.add(jaw);
-    this.add(head);
-    this.add(rim);
-    this.add(hat);
-    this.add(nose);
-    this.add(ojo2);
-    this.add(ojo1);
+    this.add(skull);
   }
 
   createGUI (gui,titleGui) {

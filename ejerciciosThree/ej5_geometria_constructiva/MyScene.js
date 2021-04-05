@@ -17,7 +17,7 @@ class MyScene extends THREE.Scene {
     this.axis = new THREE.AxesHelper (100);
     this.add (this.axis);
 
-    this.model = new MyJollyRoger(this.gui, "Controles de la estrella");
+    this.model = new MyJollyRoger(this.gui, "Controles de la calavera");
     this.add (this.model);
   }
 

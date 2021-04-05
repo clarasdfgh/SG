@@ -2,7 +2,7 @@ import * as THREE from '../libs/three.module.js'
 import { GUI } from '../libs/dat.gui.module.js'
 import { TrackballControls } from '../libs/TrackballControls.js'
 
-import { mypendulum } from './mypendulum.js'
+import { MyPendulum } from './MyPendulum.js'
 
 class MyScene extends THREE.Scene {
   constructor (myCanvas) {
@@ -16,7 +16,7 @@ class MyScene extends THREE.Scene {
     this.axis = new THREE.AxesHelper (5);
     this.add (this.axis);
 
-    this.model = new mypendulum(this.gui, "Controles de la estrella");
+    this.model = new MyPendulum(this.gui, "Controles de los péndulos");
     this.add (this.model);
   }
 

@@ -21,15 +21,15 @@ class MyJollyRoger extends THREE.Object3D {
     var rim_geom = new THREE.TorusGeometry( 17, 2, 3, 32, 2*Math.PI );
     var jaw_geom = new THREE.SphereGeometry( 8, 32, 32, 0, 2*Math.PI, 0, Math.PI );
 
-    /*jaw_geom.translate(0,-11, 0);
-    ojo1_geom.translate(5,-4,11);
-    ojo2_geom.translate(-5,-4,11);
-    nose_geom.translate(0,-8,9);
-
     rim_geom.rotateX(Math.PI / 2);
     ojo1_geom.rotateX(Math.PI / 1.5);
     ojo2_geom.rotateX(Math.PI / 1.5);
     nose_geom.rotateX(Math.PI / 1.5);
+
+    jaw_geom.translate(0,-11, 0);
+    ojo1_geom.translate(5,-4,11);
+    ojo2_geom.translate(-5,-4,11);
+    nose_geom.translate(0,-8,9);
 
     var ojo1_bsp = new ThreeBSP(ojo1_geom);
     var ojo2_bsp = new ThreeBSP(ojo2_geom);
@@ -39,18 +39,22 @@ class MyJollyRoger extends THREE.Object3D {
     var rim_bsp = new ThreeBSP(rim_geom);
     var jaw_bsp = new ThreeBSP(jaw_geom);
 
-    var skull_bsp = head_bsp.subtract(ojo1_bsp);
-    skull_bsp = head_bsp.subtract(ojo2_bsp);
-    skull_bsp = head_bsp.subtract(nose_bsp);
-    skull_bsp = head_bsp.union(jaw_bsp);
+    var skull_bsp = head_bsp.subtract(ojo1_bsp).subtract(ojo2_bsp).subtract(nose_bsp).union(jaw_bsp);
+    var strawhat_bsp = hat_bsp.union(rim_bsp);
 
     var skull = skull_bsp.toMesh(material);
+    var strawhat = strawhat_bsp.toMesh(amarillo);
+
     skull.geometry.computeFaceNormals();
     skull.geometry.computeVertexNormals();
 
-    this.add(skull);*/
+    strawhat.geometry.computeFaceNormals();
+    strawhat.geometry.computeVertexNormals();
 
-    const ojo1 = new THREE.Mesh( ojo1_geom, negro );
+    this.add(skull);
+    this.add(strawhat);
+
+    /*const ojo1 = new THREE.Mesh( ojo1_geom, negro );
     const ojo2 = new THREE.Mesh( ojo2_geom, negro );
     const nose = new THREE.Mesh( nose_geom, negro );
     const head = new THREE.Mesh( head_geom, material );
@@ -74,7 +78,7 @@ class MyJollyRoger extends THREE.Object3D {
     this.add(hat);
     this.add(nose);
     this.add(ojo2);
-    this.add(ojo1);
+    this.add(ojo1);*/
   }
 
   createGUI (gui,titleGui) {

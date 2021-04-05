@@ -1,32 +1,7 @@
 import * as THREE from '../libs/three.module.js'
-import {ThreeBSP} from '../libs/ThreeBSP.js'
 
-class MyJollyRoger extends THREE.Object3D {
-  constructor(gui,titleGui) {
-    super();
+class MyPendulum extends THREE.Object3D {
 
-    this.createGUI(gui,titleGui);
-
-    var material = new THREE.MeshNormalMaterial();
-
-    var ojo1_geom = new THREE.CylinderGeometry( 3.5, 3.5, 5, 32 );
-    var head_geom = new THREE.SphereGeometry ( 14, 32, 32, 0, 2*Math.PI, 0, Math.PI );
-
-    ojo1_geom.translate(5,-4,11);
-    ojo1_geom.rotateX(Math.PI / 1.5);
-
-    var ojo1_bsp = new ThreeBSP(ojo1_geom);
-    var head_bsp = new ThreeBSP(head_geom);
-
-    var skull_bsp = head_bsp.subtract(ojo1_bsp);
-
-    var skull_geom = skull_bsp.toGeometry(material);
-
-    var skull = skull_geom.toMesh(material);
-    skull.geometry.computeFaceNormals();
-    skull.geometry.computeVertexNormals();
-
-    this.add(skull);
   }
 
   createGUI (gui,titleGui) {
@@ -82,4 +57,4 @@ class MyJollyRoger extends THREE.Object3D {
   }
 }
 
-export { MyJollyRoger };
+export { MyPendulum };

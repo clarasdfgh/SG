@@ -27,6 +27,7 @@ class MyScene extends THREE.Scene {
 
     this.cubo = new MyCube(this.gui, "Controles del Cubo");
     this.add (this.cubo);
+    this.cubo.position.set(-5,5,0);
 
 
     this.axis_cone = new THREE.AxesHelper (5);
@@ -35,6 +36,7 @@ class MyScene extends THREE.Scene {
 
     this.cone = new MyCone(this.gui, "Controles del Cono");
     this.add (this.cone);
+    this.cone.position.set(0,5,0);
 
 
     this.axis_cyl = new THREE.AxesHelper (5);
@@ -43,6 +45,7 @@ class MyScene extends THREE.Scene {
 
     this.cyl = new MyCylinder(this.gui, "Controles del Cilindro");
     this.add (this.cyl);
+    this.cyl.position.set(5,5,0);
 
 
     this.axis_sph = new THREE.AxesHelper (5);
@@ -51,6 +54,7 @@ class MyScene extends THREE.Scene {
 
     this.sph = new MySphere(this.gui, "Controles de la Esfera");
     this.add (this.sph);
+    this.sph.position.set(-5,-5,0);
 
 
     this.axis_toro = new THREE.AxesHelper (5);
@@ -59,6 +63,7 @@ class MyScene extends THREE.Scene {
 
     this.toro = new MyThorus(this.gui, "Controles del Toro");
     this.add (this.toro);
+    this.toro.position.set(0,-5,0);
 
 
     this.axis_d20 = new THREE.AxesHelper (5);
@@ -67,6 +72,7 @@ class MyScene extends THREE.Scene {
 
     this.d20 = new MyD20(this.gui, "Controles del D20");
     this.add (this.d20);
+    this.d20.position.set(5,-5,0);
   }
 
   createCamera () {

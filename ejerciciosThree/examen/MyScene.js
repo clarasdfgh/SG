@@ -2,7 +2,7 @@ import * as THREE from '../libs/three.module.js'
 import { GUI } from '../libs/dat.gui.module.js'
 import { TrackballControls } from '../libs/TrackballControls.js'
 
-import { MyAnimation } from './MyAnimation.js'
+import { MyPacman } from './MyPacman.js'
 
 class MyScene extends THREE.Scene {
   constructor (myCanvas) {
@@ -16,7 +16,7 @@ class MyScene extends THREE.Scene {
     this.axis = new THREE.AxesHelper (5);
     this.add (this.axis);
 
-    this.model = new MyAnimation(this.gui, "Controles de la escena");
+    this.model = new MyPacman(this.gui, "Controles de la escena");
     this.add (this.model);
   }
 
@@ -60,7 +60,7 @@ class MyScene extends THREE.Scene {
     this.add (ambientLight);
 
     this.spotLight = new THREE.SpotLight( 0xffffff, this.guiControls.lightIntensity );
-    this.spotLight.position.set( 60, 60, 40 );
+    this.spotLight.position.set( 60, 160, 40 );
     this.add (this.spotLight);
   }
 
